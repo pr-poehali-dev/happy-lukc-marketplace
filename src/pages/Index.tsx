@@ -170,9 +170,7 @@ const Index = () => {
               <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
                 <div className="text-5xl mb-4">🤝</div>
                 <h3 className="text-xl font-bold mb-3">Сообщество</h3>
-                <p className="text-muted-foreground">
-                  Присоединяйся к нашему Telegram-каналу с 10 000+ участников!
-                </p>
+                <p className="text-muted-foreground">Присоединяйся к нашему Telegram-каналу</p>
               </Card>
             </div>
           </div>
