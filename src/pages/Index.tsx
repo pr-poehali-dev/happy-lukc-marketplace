@@ -6,7 +6,50 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 const Index = () => {
-  const products: any[] = [];
+  const games = [
+    {
+      id: 'roblox',
+      name: 'Roblox',
+      icon: '🎮',
+      color: 'from-red-500 to-red-600',
+      categories: ['Робуксы', 'Аккаунты', 'Вещи']
+    },
+    {
+      id: 'minecraft',
+      name: 'Minecraft',
+      icon: '⛏️',
+      color: 'from-green-500 to-green-600',
+      categories: ['Донаты', 'Сервера', 'Лицензии']
+    },
+    {
+      id: 'standoff2',
+      name: 'Standoff 2',
+      icon: '🔫',
+      color: 'from-orange-500 to-orange-600',
+      categories: ['Скины', 'Аккаунты', 'Кланы']
+    },
+    {
+      id: 'like',
+      name: 'Like',
+      icon: '❤️',
+      color: 'from-pink-500 to-pink-600',
+      categories: ['Накрутка', 'Аккаунты', 'СуперЛайки']
+    },
+    {
+      id: 'youtube',
+      name: 'YouTube',
+      icon: '▶️',
+      color: 'from-red-500 to-red-700',
+      categories: ['Накрутка', 'Аккаунты', 'Модераторы-Админы-Монтажёры']
+    },
+    {
+      id: 'rutube',
+      name: 'Rutube',
+      icon: '📺',
+      color: 'from-blue-500 to-blue-600',
+      categories: ['Накрутка', 'Аккаунты', 'Продвижение']
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10">
@@ -22,11 +65,17 @@ const Index = () => {
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link to="/" className="text-sm font-medium text-primary transition-colors">
               Главная
             </Link>
             <Link to="/catalog" className="text-sm font-medium hover:text-primary transition-colors">
               Каталог
+            </Link>
+            <Link to="/premium" className="text-sm font-medium hover:text-primary transition-colors">
+              Premium
+            </Link>
+            <Link to="/chat" className="text-sm font-medium hover:text-primary transition-colors">
+              Чаты
             </Link>
             <Link to="/profile" className="text-sm font-medium hover:text-primary transition-colors">
               Профиль
@@ -43,16 +92,20 @@ const Index = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" className="relative">
-              <Icon name="ShoppingCart" size={20} />
-              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-xs text-accent-foreground flex items-center justify-center">
-                0
-              </span>
-            </Button>
-            <Button variant="default" className="hidden sm:flex">
-              <Icon name="User" size={16} className="mr-2" />
-              Войти
-            </Button>
+            <Link to="/chat">
+              <Button variant="ghost" size="icon" className="relative">
+                <Icon name="MessageCircle" size={20} />
+                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-xs text-accent-foreground flex items-center justify-center">
+                  2
+                </span>
+              </Button>
+            </Link>
+            <Link to="/sell">
+              <Button variant="default" className="hidden sm:flex">
+                <Icon name="Plus" size={16} className="mr-2" />
+                Продавать
+              </Button>
+            </Link>
             <Button variant="ghost" size="icon" className="md:hidden">
               <Icon name="Menu" size={20} />
             </Button>
@@ -66,20 +119,24 @@ const Index = () => {
             <div className="text-center mb-12 animate-in fade-in slide-in-from-top duration-700">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
                 Покупай и продавай
-                <br />с радостью! 🎉
+                <br />игровые услуги! 🎮
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Маркетплейс нового поколения с безопасными платежами и дружелюбным сообществом
+                Маркетплейс игровых услуг с безопасными платежами и защитой сделок
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
-                <Button size="lg" className="text-lg px-8 shadow-lg hover:shadow-xl transition-shadow">
-                  <Icon name="Plus" size={20} className="mr-2" />
-                  Разместить товар
-                </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8">
-                  <Icon name="Search" size={20} className="mr-2" />
-                  Найти товар
-                </Button>
+                <Link to="/sell">
+                  <Button size="lg" className="text-lg px-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <Icon name="Plus" size={20} className="mr-2" />
+                    Разместить услугу
+                  </Button>
+                </Link>
+                <Link to="/catalog">
+                  <Button size="lg" variant="outline" className="text-lg px-8">
+                    <Icon name="Search" size={20} className="mr-2" />
+                    Найти услугу
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -87,90 +144,89 @@ const Index = () => {
               <div className="relative">
                 <Icon name="Search" size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <Input
-                  placeholder="Поиск товаров..."
+                  placeholder="Поиск услуг..."
                   className="pl-12 h-14 text-lg shadow-md"
                 />
               </div>
             </div>
 
-            <div className="flex gap-3 mb-8 overflow-x-auto pb-2">
-              {['Все', 'Электроника', 'Одежда', 'Обувь', 'Аксессуары', 'Дом'].map((category) => (
-                <Button
-                  key={category}
-                  variant={category === 'Все' ? 'default' : 'outline'}
-                  className="whitespace-nowrap"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-8 px-4">
-          <div className="container">
-            <h2 className="text-3xl font-bold mb-8">🔥 Популярные товары</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center">🎯 Выберите игру</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 hover:border-primary/50">
-                  <div className="relative overflow-hidden h-48">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                    />
-                    <Badge className="absolute top-3 right-3 bg-secondary text-secondary-foreground">
-                      {product.category}
-                    </Badge>
-                  </div>
-                  <CardContent className="pt-4">
-                    <h3 className="font-semibold text-lg mb-2">{product.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                      <Icon name="Store" size={16} />
-                      <span>{product.seller}</span>
+              {games.map((game) => (
+                <Link key={game.id} to={`/game/${game.id}`}>
+                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/50 cursor-pointer">
+                    <div className={`h-32 bg-gradient-to-br ${game.color} flex items-center justify-center text-6xl`}>
+                      {game.icon}
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-primary">
-                        {product.price.toLocaleString('ru-RU')} ₽
-                      </span>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="gap-2">
-                    <Button className="flex-1" variant="default">
-                      <Icon name="ShoppingCart" size={16} className="mr-2" />
-                      Купить
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      <Icon name="Heart" size={16} />
-                    </Button>
-                  </CardFooter>
-                </Card>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-2xl mb-3 text-center">{game.name}</h3>
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {game.categories.map((category) => (
+                          <span
+                            key={category}
+                            className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium"
+                          >
+                            {category}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-16 px-4 bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 mt-16">
+        <section className="py-16 px-4 bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10">
           <div className="container">
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-8 border-2 hover:border-primary transition-colors">
                 <div className="text-5xl mb-4">🛡️</div>
-                <h3 className="text-xl font-bold mb-3">Безопасные платежи</h3>
+                <h3 className="text-xl font-bold mb-3">Безопасность</h3>
                 <p className="text-muted-foreground">
-                  Привязка карт с защитой данных. Гарантия возврата средств.
+                  Защита всех сделок и гарантия возврата средств
                 </p>
               </Card>
-              <Card className="text-center p-8 border-2 hover:border-accent transition-colors">
+
+              <Card className="text-center p-8 border-2 hover:border-primary transition-colors">
                 <div className="text-5xl mb-4">⚡</div>
-                <h3 className="text-xl font-bold mb-3">Быстрые сделки</h3>
+                <h3 className="text-xl font-bold mb-3">Быстро</h3>
                 <p className="text-muted-foreground">
-                  Мгновенная оплата и уведомления о статусе заказа.
+                  Мгновенная передача товаров и услуг
                 </p>
               </Card>
-              <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
-                <div className="text-5xl mb-4">🤝</div>
-                <h3 className="text-xl font-bold mb-3">Сообщество</h3>
-                <p className="text-muted-foreground">Присоединяйся к нашему Telegram-каналу</p>
+
+              <Card className="text-center p-8 border-2 hover:border-primary transition-colors">
+                <div className="text-5xl mb-4">💬</div>
+                <h3 className="text-xl font-bold mb-3">Поддержка 24/7</h3>
+                <p className="text-muted-foreground">
+                  Всегда готовы помочь в чате и решить любой вопрос
+                </p>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 px-4">
+          <div className="container max-w-4xl">
+            <h2 className="text-3xl font-bold mb-8 text-center">📊 Статистика платформы</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <Card className="text-center p-6">
+                <div className="text-3xl font-bold text-primary mb-2">12,847</div>
+                <div className="text-sm text-muted-foreground">Активных объявлений</div>
+              </Card>
+              <Card className="text-center p-6">
+                <div className="text-3xl font-bold text-accent mb-2">45,231</div>
+                <div className="text-sm text-muted-foreground">Пользователей</div>
+              </Card>
+              <Card className="text-center p-6">
+                <div className="text-3xl font-bold text-secondary mb-2">98.7%</div>
+                <div className="text-sm text-muted-foreground">Успешных сделок</div>
+              </Card>
+              <Card className="text-center p-6">
+                <div className="text-3xl font-bold text-primary mb-2">24/7</div>
+                <div className="text-sm text-muted-foreground">Поддержка</div>
               </Card>
             </div>
           </div>
