@@ -6,56 +6,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 const Index = () => {
-  const products = [
-    {
-      id: 1,
-      title: 'Наушники Premium',
-      price: 5990,
-      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop',
-      category: 'Электроника',
-      seller: 'TechStore'
-    },
-    {
-      id: 2,
-      title: 'Кроссовки Nike Air',
-      price: 8990,
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop',
-      category: 'Обувь',
-      seller: 'SneakerShop'
-    },
-    {
-      id: 3,
-      title: 'Рюкзак городской',
-      price: 3490,
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop',
-      category: 'Аксессуары',
-      seller: 'BagStore'
-    },
-    {
-      id: 4,
-      title: 'Умные часы',
-      price: 12990,
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop',
-      category: 'Электроника',
-      seller: 'GadgetHub'
-    },
-    {
-      id: 5,
-      title: 'Толстовка унисекс',
-      price: 2990,
-      image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=300&fit=crop',
-      category: 'Одежда',
-      seller: 'FashionPlace'
-    },
-    {
-      id: 6,
-      title: 'Игровая мышь',
-      price: 4490,
-      image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop',
-      category: 'Электроника',
-      seller: 'GamersWorld'
-    }
-  ];
+  const products: any[] = [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10">
